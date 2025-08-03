@@ -1,36 +1,139 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+```md
+# MiniLinkedIn Frontend
 
-## Getting Started
+This is the **frontend** for the MiniLinkedIn Community Platform built with **Next.js App Router**, **Tailwind CSS**, and **Axios**. It provides features like:
 
-First, run the development server:
+- User authentication
+- Post creation and feed
+- Profile page
+- Responsive UI with Tailwind CSS
+
+---
+
+## 📁 Project Structure
+
+```
+
+frontend/
+├── app/                    # App Router (pages, routing)
+│   ├── home/               # Home feed (Post listing)
+│   ├── profile/            # User profile page
+│   └── login/, register/   # Auth pages
+├── components/             # UI components (Navbar, PostCard, etc.)
+├── lib/                    # Axios instance (API setup)
+├── styles/                 # Tailwind/global CSS
+├── public/                 # Static assets
+├── .env.local              # Environment variables
+├── tailwind.config.js      # Tailwind config
+├── postcss.config.js       # PostCSS config
+├── package.json
+└── README.md
+
+````
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/your-username/minilinkedin-frontend.git
+cd minilinkedin-frontend
+````
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+### 3. Set up environment variables
+
+Create a `.env.local` file in the root with the following:
+
+```env
+NEXT_PUBLIC_API_URL=http://localhost:5000/api
+```
+
+Make sure the backend is running at this URL. Update if deployed.
+
+### 4. Run the development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Frontend will be live at [http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🔧 Features
 
-## Learn More
+* ✅ App Router with Server Components
+* ✅ Tailwind CSS styling
+* ✅ Axios for API calls
+* ✅ Auth with JWT (token stored in localStorage)
+* ✅ Post feed and creation
+* ✅ Profile view
+* ✅ Loading bar animation
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🧪 Scripts
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npm run dev       # Run development server
+npm run build     # Build for production
+npm run start     # Start production server
+```
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📦 Dependencies
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+* [Next.js (App Router)](https://nextjs.org/docs/app)
+* [Tailwind CSS](https://tailwindcss.com/)
+* [Axios](https://axios-http.com/)
+* [React Icons](https://react-icons.github.io/react-icons/)
+
+---
+
+## 📸 Screenshots (Optional)
+
+You can add screenshots like:
+
+```
+/screenshots/home.png
+/screenshots/profile.png
+```
+
+Then embed them:
+
+```md
+![Home Page](screenshots/home.png)
+```
+
+
+---
+
+## 📬 API Reference
+
+All requests are made to the backend via:
+
+```
+${NEXT_PUBLIC_API_URL}/
+```
+
+Example endpoints:
+
+* `GET /posts`
+* `POST /posts`
+* `GET /profile/:id`
+* `POST /auth/register`
+* `POST /auth/login`
+
+---
+
+
+
