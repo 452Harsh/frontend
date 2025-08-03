@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import API from '@/lib/api';
 import Navbar from '@/components/Navbar';
@@ -9,11 +9,24 @@ export default function CreatePost() {
   const [content, setContent] = useState('');
   const router = useRouter();
 
+  // ✅ Redirect unauthenticated users
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      router.push('/login');
+    }
+  }, [router]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!content.trim()) return;
-    await API.post('/posts', { content });
-    router.push('/');
+
+    try {
+      await API.post('/posts', { content });
+      router.push('/');
+    } catch (error) {
+      console.error('Failed to create post:', error);
+    }
   };
 
   return (
@@ -21,7 +34,9 @@ export default function CreatePost() {
       <Navbar />
       <div className="max-w-xl mx-auto mt-10 px-4">
         <div className="bg-white shadow-lg rounded-2xl p-6 border border-gray-100">
-          <h2 className="text-2xl font-semibold mb-4 text-gray-800">What's on your mind?</h2>
+          <h2 className="text-2xl font-semibold mb-4 text-gray-800">
+            What's on your mind?
+          </h2>
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <textarea
